@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DreamCap – Reise in deine Traumwelt</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Helvetica Neue', sans-serif;
       background: linear-gradient(to bottom, #0a0a23, #1a1a40);
       color: #ffffff;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -35,16 +37,39 @@
       text-decoration: none;
       margin-left: 20px;
       font-weight: bold;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #6a8dff;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .hero {
       text-align: center;
-      padding: 100px 20px 50px 20px;
+      padding: 120px 20px 60px 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .hero.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero h2 {
       font-size: 3.5em;
-      color: #ffffff;
       margin-bottom: 20px;
     }
 
@@ -59,6 +84,14 @@
       padding: 60px 40px;
       max-width: 1200px;
       margin: 0 auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     section h3 {
@@ -79,11 +112,11 @@
       padding: 30px;
       border-radius: 10px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
     }
 
     .feature:hover {
-      transform: translateY(-10px);
+      transform: scale(1.05);
       background: rgba(255,255,255,0.1);
     }
 
@@ -98,21 +131,28 @@
       padding: 30px;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
       position: relative;
+      overflow: hidden;
     }
 
     .product-card:hover {
-      transform: translateY(-10px);
+      transform: scale(1.05);
       background: rgba(255,255,255,0.1);
     }
 
     .details {
-      display: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+
+    .details.show {
+      opacity: 1;
+      max-height: 500px;
       margin-top: 20px;
-      background: rgba(0,0,0,0.3);
-      padding: 20px;
-      border-radius: 8px;
     }
 
     .button {
@@ -125,11 +165,12 @@
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
     .button:hover {
       background-color: #4c66cc;
+      transform: scale(1.1);
     }
 
     footer {
@@ -229,12 +270,23 @@
   <script>
     function toggleDetails(id) {
       const el = document.getElementById("details-" + id);
-      if (el.style.display === "block") {
-        el.style.display = "none";
-      } else {
-        el.style.display = "block";
-      }
+      el.classList.toggle("show");
     }
+
+    // Animationen beim Scrollen einblenden
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.hero, section').forEach(section => {
+      observer.observe(section);
+    });
   </script>
 </body>
 </html>
