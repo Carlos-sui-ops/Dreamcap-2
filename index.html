@@ -2,10 +2,11 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DreamCap</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    /* Coole, Apple-artige Animationen */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -15,137 +16,67 @@
       opacity: 1;
       transform: translateY(0);
     }
-    .rotate-180 {
-      transform: rotate(180deg);
-    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white min-h-screen flex flex-col">
-
   <!-- Header -->
   <header class="text-center p-8">
     <h1 class="text-5xl font-extrabold mb-4 fade-in">DreamCap</h1>
-    <p class="text-xl fade-in max-w-xl mx-auto">
-      Tauche vor dem Einschlafen in neue Welten ein und träume dein Leben neu.
-    </p>
+    <p class="text-xl fade-in">Du kannst nicht nur vor dem Einschlafen <br>in eine neue Welt eintauchen, sondern dein Leben neu träumen.</p>
   </header>
 
   <!-- Produkte -->
-  <main class="flex-1 container mx-auto px-4 space-y-12">
-    
-    <!-- Hauptmodelle -->
-    <section class="space-y-6">
+  <main class="flex-1 container mx-auto px-4 space-y-8">
+    <section class="space-y-4">
       <h2 class="text-3xl font-bold fade-in">Unsere Modelle</h2>
 
-      <!-- Beginner -->
+      <!-- Modell: Beginner -->
       <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
         <button 
-          onclick="toggleDetails('beginner-details', 'icon-beginner')" 
-          class="w-full flex items-center justify-between text-left focus:outline-none">
+          onclick="toggleDetails('beginner-details')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none">
           <span class="text-2xl font-semibold">DreamCap Beginner</span>
-          <span class="text-sm text-gray-400 ml-4 select-none whitespace-nowrap">Klicken für mehr</span>
-          <svg id="icon-beginner" class="w-6 h-6 ml-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg id="icon-beginner-details" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         <div id="beginner-details" class="mt-4 hidden">
-          <p class="text-gray-300 mb-2">Einstieg in die Traumwelt mit einfachen Features.</p>
-          <p class="text-xl font-bold mb-2">149€</p>
+          <p class="text-gray-300 mb-2">Perfekt für Einsteiger, die erste Traum-Abenteuer erleben wollen.</p>
+          <p class="text-xl font-bold mb-2">Preis: 149€</p>
           <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
         </div>
       </div>
 
-      <!-- Advanced -->
+      <!-- Modell: Advanced -->
       <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
         <button 
-          onclick="toggleDetails('advanced-details', 'icon-advanced')" 
-          class="w-full flex items-center justify-between text-left focus:outline-none">
+          onclick="toggleDetails('advanced-details')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none">
           <span class="text-2xl font-semibold">DreamCap Advanced</span>
-          <span class="text-sm text-gray-400 ml-4 select-none whitespace-nowrap">Klicken für mehr</span>
-          <svg id="icon-advanced" class="w-6 h-6 ml-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg id="icon-advanced-details" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         <div id="advanced-details" class="mt-4 hidden">
-          <p class="text-gray-300 mb-2">Mehr Kontrolle und erweiterte Funktionen.</p>
-          <p class="text-xl font-bold mb-2">299€</p>
+          <p class="text-gray-300 mb-2">Mehr Features, mehr Kontrolle über deine Träume – für Fortgeschrittene.</p>
+          <p class="text-xl font-bold mb-2">Preis: 299€</p>
           <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
         </div>
       </div>
 
-      <!-- Pro -->
+      <!-- Modell: Pro -->
       <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
         <button 
-          onclick="toggleDetails('pro-details', 'icon-pro')" 
-          class="w-full flex items-center justify-between text-left focus:outline-none">
+          onclick="toggleDetails('pro-details')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none">
           <span class="text-2xl font-semibold">DreamCap Pro</span>
-          <span class="text-sm text-gray-400 ml-4 select-none whitespace-nowrap">Klicken für mehr</span>
-          <svg id="icon-pro" class="w-6 h-6 ml-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg id="icon-pro-details" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         <div id="pro-details" class="mt-4 hidden">
-          <p class="text-gray-300 mb-2">Maximale Leistung für intensive Traumreisen.</p>
-          <p class="text-xl font-bold mb-2">499€</p>
-          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Nebengegenstände -->
-    <section class="space-y-6">
-      <h2 class="text-3xl font-bold fade-in">Nebengegenstände</h2>
-
-      <!-- Tragegurt -->
-      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-        <button 
-          onclick="toggleDetails('gurt-details', 'icon-gurt')" 
-          class="w-full flex items-center justify-between text-left focus:outline-none">
-          <span class="text-2xl font-semibold">Tragegurt</span>
-          <span class="text-sm text-gray-400 ml-4 select-none whitespace-nowrap">Klicken für mehr</span>
-          <svg id="icon-gurt" class="w-6 h-6 ml-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div id="gurt-details" class="mt-4 hidden">
-          <p class="text-gray-300 mb-2">Bequemer, verstellbarer Tragegurt für sicheren Halt.</p>
-          <p class="text-xl font-bold mb-2">39€</p>
-          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
-        </div>
-      </div>
-
-      <!-- Ersatzkabel -->
-      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-        <button 
-          onclick="toggleDetails('kabel-details', 'icon-kabel')" 
-          class="w-full flex items-center justify-between text-left focus:outline-none">
-          <span class="text-2xl font-semibold">Ersatzkabel</span>
-          <span class="text-sm text-gray-400 ml-4 select-none whitespace-nowrap">Klicken für mehr</span>
-          <svg id="icon-kabel" class="w-6 h-6 ml-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div id="kabel-details" class="mt-4 hidden">
-          <p class="text-gray-300 mb-2">Hochwertiges Ersatzkabel für beste Verbindung.</p>
-          <p class="text-xl font-bold mb-2">19€</p>
-          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
-        </div>
-      </div>
-
-      <!-- Reinigungsset -->
-      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
-        <button 
-          onclick="toggleDetails('reinigungs-details', 'icon-reinigung')" 
-          class="w-full flex items-center justify-between text-left focus:outline-none">
-          <span class="text-2xl font-semibold">Reinigungsset</span>
-          <span class="text-sm text-gray-400 ml-4 select-none whitespace-nowrap">Klicken für mehr</span>
-          <svg id="icon-reinigung" class="w-6 h-6 ml-2 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div id="reinigungs-details" class="mt-4 hidden">
-          <p class="text-gray-300 mb-2">Alles für die einfache und sichere Reinigung.</p>
-          <p class="text-xl font-bold mb-2">29€</p>
+          <p class="text-gray-300 mb-2">Maximale Performance für die intensivsten Traumreisen. Für Profis & Kreative.</p>
+          <p class="text-xl font-bold mb-2">Preis: 499€</p>
           <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
         </div>
       </div>
@@ -154,30 +85,9 @@
 
   <!-- Footer -->
   <footer class="text-center p-6 text-gray-400">
-    &copy; 2025 DreamCap. Alle Rechte vorbehalten.<br />
-    Gemacht von Julen, Roman, Roman und Carlos
+    &copy; 2025 DreamCap. Alle Rechte vorbehalten.
   </footer>
 
   <script>
-    // Klappmenü ein-/ausblenden & Icon rotieren
-    function toggleDetails(id, iconId) {
-      const details = document.getElementById(id);
-      const icon = document.getElementById(iconId);
-      if(details.classList.contains('hidden')) {
-        details.classList.remove('hidden');
-        icon.classList.add('rotate-180');
-      } else {
-        details.classList.add('hidden');
-        icon.classList.remove('rotate-180');
-      }
-    }
-
-    // Fade-in Animation beim Laden
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.fade-in').forEach(el => {
-        el.classList.add('show');
-      });
-    });
-  </script>
-</body>
-</html>
+    // Animation beim Laden
+    window.addEventListener('
