@@ -2,290 +2,180 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DreamCap – Reise in deine Traumwelt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DreamCap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: linear-gradient(to bottom, #0a0a23, #1a1a40);
-      color: #ffffff;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(0,0,0,0.6);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    header h1 {
-      font-size: 1.8em;
-      color: #6a8dff;
-      margin: 0;
-    }
-
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-      position: relative;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: #6a8dff;
-      left: 0;
-      bottom: -4px;
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 120px 20px 60px 20px;
+    .fade-in {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
     }
-
-    .hero.visible {
+    .fade-in.show {
       opacity: 1;
       transform: translateY(0);
     }
-
-    .hero h2 {
-      font-size: 3.5em;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2em;
-      color: #cccccc;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    section {
-      padding: 60px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section h3 {
-      font-size: 2.8em;
-      margin-bottom: 40px;
-      color: #6a8dff;
-      text-align: center;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .feature {
-      background: rgba(255,255,255,0.05);
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      transition: transform 0.4s ease;
-    }
-
-    .feature:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.1);
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-    }
-
-    .product-card {
-      background: rgba(255,255,255,0.05);
-      padding: 30px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .product-card:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.1);
-    }
-
-    .details {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, opacity 0.5s ease;
-      opacity: 0;
-      margin-top: 0;
-    }
-
-    .details.show {
-      opacity: 1;
-      max-height: 500px;
-      margin-top: 20px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 10px;
-      color: #ffffff;
-      background-color: #6a8dff;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.2s ease, background-color 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #4c66cc;
-      transform: scale(1.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      font-size: 0.9em;
-      color: #888888;
-      border-top: 1px solid #333333;
-      margin-top: 60px;
+    .rotate-180 {
+      transform: rotate(180deg);
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>DreamCap</h1>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#products">Produkte</a>
-      <a href="#accessories">Zubehör</a>
-    </nav>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="text-center p-8">
+    <h1 class="text-5xl font-extrabold mb-4 fade-in">DreamCap</h1>
+    <p class="text-xl fade-in max-w-xl mx-auto">
+      Tauche vor dem Einschlafen in neue Welten ein und träume dein Leben neu.
+    </p>
   </header>
 
-  <section class="hero">
-    <h2>Träume. Reisen. Erleben.</h2>
-    <p>DreamCap ist die revolutionäre Technologie, mit der du immer direkt in deine Lieblingsspiele reisen kannst – nicht nur vor dem Einschlafen. Setz die Cap auf, schließ die Augen – und die Abenteuer beginnen.</p>
-  </section>
+  <!-- Produkte -->
+  <main class="flex-1 container mx-auto px-4 space-y-12">
+    
+    <!-- Hauptmodelle -->
+    <section class="space-y-6">
+      <h2 class="text-3xl font-bold fade-in">Unsere Modelle</h2>
 
-  <section id="features">
-    <h3>Features</h3>
-    <div class="features">
-      <div class="feature">
-        <h4>Spielreisen</h4>
-        <p>Erkunde digitale Welten, als wärst du selbst vor Ort. Realistisch, intensiv, unvergleichlich.</p>
-      </div>
-      <div class="feature">
-        <h4>Traumkontrolle</h4>
-        <p>Wähle bewusst deine Ziele, Charaktere und Storylines – du bestimmst, wohin es geht.</p>
-      </div>
-      <div class="feature">
-        <h4>Biometrische Sicherheit</h4>
-        <p>Nur dein Gehirn kann die Cap starten. Datenschutz auf höchstem Niveau.</p>
-      </div>
-      <div class="feature">
-        <h4>Ultra-Komfort</h4>
-        <p>Federleicht, atmungsaktiv, individuell anpassbar – damit du traumhaft schläfst.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="products">
-    <h3>Unsere Modelle</h3>
-    <div class="products">
-      <div class="product-card" onclick="toggleDetails('one')">
-        <h4>DreamCap One</h4>
-        <p>Dein Einstieg in die Traumwelten. Einfach, leicht, erschwinglich.</p>
-        <div id="details-one" class="details">
-          <p style="font-size: 1.5em; font-weight: bold; color: #6a8dff;">999 €</p>
-          <p>DreamCap One bietet minimalistisches Design und solide Performance für kurze Sessions in deinen Lieblingsspielen.</p>
-          <a href="#" class="button">Jetzt kaufen</a>
+      <!-- Beginner -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+        <button 
+          onclick="toggleDetails('beginner-details', 'icon-beginner')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none relative">
+          <span class="text-2xl font-semibold">DreamCap Beginner</span>
+          <span class="text-sm text-gray-400 absolute bottom-1 right-8 select-none">Klicken für mehr</span>
+          <svg id="icon-beginner" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="beginner-details" class="mt-4 hidden">
+          <p class="text-gray-300 mb-2">Einstieg in die Traumwelt mit einfachen Features.</p>
+          <p class="text-xl font-bold mb-2">149€</p>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
         </div>
       </div>
-      <div class="product-card" onclick="toggleDetails('pro')">
-        <h4>DreamCap Pro</h4>
-        <p>Mehr Leistung, längere Akkulaufzeit und bessere Traumgrafik.</p>
-        <div id="details-pro" class="details">
-          <p style="font-size: 1.5em; font-weight: bold; color: #6a8dff;">2.499 €</p>
-          <p>DreamCap Pro richtet sich an erfahrene Gamer, die Wert auf intensive, hochauflösende Traumwelten legen. Mit adaptiver Passform und biometrischem Login.</p>
-          <a href="#" class="button">Jetzt kaufen</a>
+
+      <!-- Advanced -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+        <button 
+          onclick="toggleDetails('advanced-details', 'icon-advanced')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none relative">
+          <span class="text-2xl font-semibold">DreamCap Advanced</span>
+          <span class="text-sm text-gray-400 absolute bottom-1 right-8 select-none">Klicken für mehr</span>
+          <svg id="icon-advanced" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="advanced-details" class="mt-4 hidden">
+          <p class="text-gray-300 mb-2">Mehr Kontrolle und erweiterte Funktionen.</p>
+          <p class="text-xl font-bold mb-2">299€</p>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
         </div>
       </div>
-      <div class="product-card" onclick="toggleDetails('ultra')">
-        <h4>DreamCap Ultra</h4>
-        <p>Ultimative Immersion dank KI und personalisierten Erlebnissen.</p>
-        <div id="details-ultra" class="details">
-          <p style="font-size: 1.5em; font-weight: bold; color: #6a8dff;">4.999 €</p>
-          <p>DreamCap Ultra ist das Flaggschiff: KI-gesteuerte Traumumgebungen, neuronale Schnittstellen und Hyperrealismus für grenzenlose Möglichkeiten.</p>
-          <a href="#" class="button">Jetzt kaufen</a>
+
+      <!-- Pro -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+        <button 
+          onclick="toggleDetails('pro-details', 'icon-pro')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none relative">
+          <span class="text-2xl font-semibold">DreamCap Pro</span>
+          <span class="text-sm text-gray-400 absolute bottom-1 right-8 select-none">Klicken für mehr</span>
+          <svg id="icon-pro" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="pro-details" class="mt-4 hidden">
+          <p class="text-gray-300 mb-2">Maximale Leistung für intensive Traumreisen.</p>
+          <p class="text-xl font-bold mb-2">499€</p>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="accessories">
-    <h3>Zubehör & Farben</h3>
-    <p>Mach dein DreamCap-Erlebnis noch besser:</p>
-    <ul>
-      <li>Tragegurt – für sicheren Halt auch beim nächtlichen Wälzen</li>
-      <li>DreamBag – stylische Tasche zum Transport deiner Cap</li>
-      <li>Individuelle Farben: Midnight Black, Dream Blue, Stardust Silver</li>
-    </ul>
-  </section>
+    <!-- Nebengegenstände -->
+    <section class="space-y-6">
+      <h2 class="text-3xl font-bold fade-in">Nebengegenstände</h2>
 
-  <footer>
-    &copy; 2025 DreamCap Inc. Alle Rechte vorbehalten.
+      <!-- Tragegurt -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+        <button 
+          onclick="toggleDetails('gurt-details', 'icon-gurt')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none relative">
+          <span class="text-2xl font-semibold">Tragegurt</span>
+          <span class="text-sm text-gray-400 absolute bottom-1 right-8 select-none">Klicken für mehr</span>
+          <svg id="icon-gurt" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="gurt-details" class="mt-4 hidden">
+          <p class="text-gray-300 mb-2">Bequemer, verstellbarer Tragegurt für sicheren Halt.</p>
+          <p class="text-xl font-bold mb-2">39€</p>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
+        </div>
+      </div>
+
+      <!-- Ersatzkabel -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+        <button 
+          onclick="toggleDetails('kabel-details', 'icon-kabel')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none relative">
+          <span class="text-2xl font-semibold">Ersatzkabel</span>
+          <span class="text-sm text-gray-400 absolute bottom-1 right-8 select-none">Klicken für mehr</span>
+          <svg id="icon-kabel" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="kabel-details" class="mt-4 hidden">
+          <p class="text-gray-300 mb-2">Hochwertiges Ersatzkabel für beste Verbindung.</p>
+          <p class="text-xl font-bold mb-2">19€</p>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
+        </div>
+      </div>
+
+      <!-- Reinigungsset -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg">
+        <button 
+          onclick="toggleDetails('reinigungs-details', 'icon-reinigung')" 
+          class="w-full flex justify-between items-center text-left focus:outline-none relative">
+          <span class="text-2xl font-semibold">Reinigungsset</span>
+          <span class="text-sm text-gray-400 absolute bottom-1 right-8 select-none">Klicken für mehr</span>
+          <svg id="icon-reinigung" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="reinigungs-details" class="mt-4 hidden">
+          <p class="text-gray-300 mb-2">Alles für die einfache und sichere Reinigung.</p>
+          <p class="text-xl font-bold mb-2">29€</p>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow">Jetzt kaufen</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-6 text-gray-400">
+    &copy; 2025 DreamCap. Alle Rechte vorbehalten.
   </footer>
 
   <script>
-    function toggleDetails(id) {
-      const el = document.getElementById("details-" + id);
-      el.classList.toggle("show");
+    // Klappmenü ein-/ausblenden & Icon rotieren
+    function toggleDetails(id, iconId) {
+      const details = document.getElementById(id);
+      const icon = document.getElementById(iconId);
+      if(details.classList.contains('hidden')) {
+        details.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        details.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
     }
 
-    // Scroll-Animationen
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+    // Fade-in Animation beim Laden
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        el.classList.add('show');
       });
-    }, {
-      threshold: 0.2
-    });
-
-    document.querySelectorAll('.hero, section').forEach(section => {
-      observer.observe(section);
     });
   </script>
 </body>
