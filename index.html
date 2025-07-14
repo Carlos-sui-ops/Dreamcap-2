@@ -10,129 +10,228 @@
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       background: linear-gradient(135deg, #0a0f3c, #1c247a);
       color: #ffffff;
       overflow-x: hidden;
     }
-
     header {
-      text-align: center;
-      padding: 80px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-
     header h1 {
-      font-size: 3.5em;
+      font-size: 2em;
       background: linear-gradient(45deg, #6a8dff, #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
     }
-
-    header p {
-      font-size: 1.4em;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-      color: #d1d1f9;
+    nav a {
+      margin-left: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
     }
-
-    .models-section {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 0 20px;
+    nav a:hover {
+      color: #6a8dff;
     }
-
-    .models-section h2 {
+    .hero {
       text-align: center;
+      padding: 100px 20px;
+    }
+    .hero h2 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #6a8dff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.5em;
+      color: #d1d1f9;
+      margin-bottom: 30px;
+    }
+    .hero button {
+      background: #6a8dff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.2em;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero button:hover {
+      background: #4b5cd8;
+    }
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section h3 {
       font-size: 2.5em;
       margin-bottom: 40px;
-      color: #ffffff;
+      text-align: center;
     }
-
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.3s, background 0.3s;
+      backdrop-filter: blur(10px);
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.2);
+    }
+    .feature-card img {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+    .feature-card h4 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+    .feature-card p {
+      color: #d1d1f9;
+    }
     .models {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
-
     .model-card {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
       border-radius: 16px;
       padding: 30px 20px;
       text-align: center;
-      transition: transform 0.3s ease, background 0.3s ease;
-      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
       backdrop-filter: blur(10px);
+      cursor: pointer;
     }
-
     .model-card:hover {
       transform: translateY(-10px);
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255,255,255,0.2);
     }
-
-    .model-card h3 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .model-card p {
-      font-size: 1em;
-      color: #d1d1f9;
-      margin-bottom: 20px;
-    }
-
     .model-card img {
       width: 100%;
       height: auto;
       border-radius: 12px;
       margin-bottom: 20px;
     }
-
+    .model-card h4 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    .model-card p {
+      color: #d1d1f9;
+      margin-bottom: 15px;
+    }
     footer {
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
       color: #9999ff;
       font-size: 0.9em;
+    }
+    footer a {
+      color: #9999ff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      color: #ffffff;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>DreamCap</h1>
-    <p>Das revolutionäre Cappy, mit dem du in deine Lieblingsspiele reisen kannst.
-    Setze es auf, schlaf ein – und entdecke fantastische Welten, als wärst du wirklich dort.</p>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#models">Modelle</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
   </header>
 
-  <section class="models-section">
-    <h2>Unsere Modelle</h2>
-    <div class="models">
-      <div class="model-card">
-        <img src="https://via.placeholder.com/300x200/6a8dff/ffffff?text=DreamCap+One" alt="DreamCap One" />
-        <h3>DreamCap One</h3>
-        <p>Das Einsteigermodell für alle, die erste Schritte ins Gaming-Traumreisen wagen möchten.
-        Leicht, komfortabel und sicher.</p>
+  <section class="hero">
+    <h2>Willkommen in deiner Traumwelt</h2>
+    <p>Mit DreamCap reist du in deine Lieblingsspiele – so real, als wärst du dort. Tauche ein in Abenteuer, Welten und Träume, die du nie vergessen wirst.</p>
+    <button onclick="alert('Das ist nur eine Demo!')">Jetzt entdecken</button>
+  </section>
+
+  <section id="features" class="section">
+    <h3>Features</h3>
+    <div class="features">
+      <div class="feature-card">
+        <img src="https://via.placeholder.com/100/6a8dff/ffffff?text=VR" alt="VR">
+        <h4>Immersive VR</h4>
+        <p>Erlebe Spiele in nie dagewesener Tiefe. Beweg dich frei und fühl dich mitten im Geschehen.</p>
       </div>
-      <div class="model-card">
-        <img src="https://via.placeholder.com/300x200/4b5cd8/ffffff?text=DreamCap+Pro" alt="DreamCap Pro" />
-        <h3>DreamCap Pro</h3>
-        <p>Für Hardcore-Gamer: noch realistischere Welten, verbesserte Sensorik und längere Traumdauer.
-        Perfekt für immersive Abenteuer.</p>
+      <div class="feature-card">
+        <img src="https://via.placeholder.com/100/4b5cd8/ffffff?text=KI" alt="KI">
+        <h4>KI-gesteuerte Träume</h4>
+        <p>Unsere KI passt die Traumwelt an deine Wünsche an. Jeder Traum wird einzigartig.</p>
       </div>
-      <div class="model-card">
-        <img src="https://via.placeholder.com/300x200/2e3baa/ffffff?text=DreamCap+Ultra" alt="DreamCap Ultra" />
-        <h3>DreamCap Ultra</h3>
-        <p>Das Nonplusultra: KI-gestützte Traumsteuerung, hyperrealistische Grafiken und personalisierte Welten.
-        Der ultimative Gamechanger.</p>
+      <div class="feature-card">
+        <img src="https://via.placeholder.com/100/2e3baa/ffffff?text=Safety" alt="Sicherheit">
+        <h4>Maximale Sicherheit</h4>
+        <p>Modernste Technologie schützt dich während deiner Traumreisen. Absolut risikofrei.</p>
       </div>
     </div>
   </section>
 
+  <section id="models" class="section">
+    <h3>Unsere Modelle</h3>
+    <div class="models">
+      <div class="model-card">
+        <img src="https://via.placeholder.com/300x200/6a8dff/ffffff?text=DreamCap+One" alt="DreamCap One">
+        <h4>DreamCap One</h4>
+        <p>Perfekt für Einsteiger: leicht, bequem und sicher. Deine erste Reise in neue Welten beginnt hier.</p>
+        <button onclick="alert('Dies ist nur eine Demo.')">Mehr erfahren</button>
+      </div>
+      <div class="model-card">
+        <img src="https://via.placeholder.com/300x200/4b5cd8/ffffff?text=DreamCap+Pro" alt="DreamCap Pro">
+        <h4>DreamCap Pro</h4>
+        <p>Für Profis: Hyperrealistische Grafik, längere Sessions und mehr Freiheit. Pure Gaming-Power.</p>
+        <button onclick="alert('Dies ist nur eine Demo.')">Mehr erfahren</button>
+      </div>
+      <div class="model-card">
+        <img src="https://via.placeholder.com/300x200/2e3baa/ffffff?text=DreamCap+Ultra" alt="DreamCap Ultra">
+        <h4>DreamCap Ultra</h4>
+        <p>Das Beste vom Besten: KI-optimierte Träume, absolute Immersion. Die Zukunft beginnt jetzt.</p>
+        <button onclick="alert('Dies ist nur eine Demo.')">Mehr erfahren</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="section">
+    <h3>Kontakt</h3>
+    <p style="text-align:center; max-width: 700px; margin: 0 auto; color: #d1d1f9;">
+      Hast du Fragen zu DreamCap? Oder willst du die Technologie testen? Schreib uns eine Nachricht und tauche ein in deine persönliche Traumwelt!
+    </p>
+    <div style="text-align:center; margin-top: 30px;">
+      <button onclick="alert('Das Kontaktformular ist nur eine Demo.')">Kontakt aufnehmen</button>
+    </div>
+  </section>
+
   <footer>
-    &copy; 2025 DreamCap. Diese Seite dient nur zu Demonstrationszwecken.
+    &copy; 2025 DreamCap | 
+    <a href="#">Impressum</a> | 
+    <a href="#">Datenschutz</a>
   </footer>
 </body>
 </html>
