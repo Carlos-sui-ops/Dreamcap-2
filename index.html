@@ -2,18 +2,14 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DreamCap – Reise in Spiele</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
     body {
+      margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       background: linear-gradient(135deg, #0a0f3c, #1c247a);
-      color: #ffffff;
+      color: #fff;
       overflow-x: hidden;
     }
     header {
@@ -81,34 +77,6 @@
       margin-bottom: 40px;
       text-align: center;
     }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    .feature-card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 30px 20px;
-      text-align: center;
-      transition: transform 0.3s, background 0.3s;
-      backdrop-filter: blur(10px);
-    }
-    .feature-card:hover {
-      transform: translateY(-10px);
-      background: rgba(255,255,255,0.2);
-    }
-    .feature-card img {
-      width: 100px;
-      margin-bottom: 20px;
-    }
-    .feature-card h4 {
-      margin-bottom: 10px;
-      font-size: 1.5em;
-    }
-    .feature-card p {
-      color: #d1d1f9;
-    }
     .models {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -129,7 +97,6 @@
     }
     .model-card img {
       width: 100%;
-      height: auto;
       border-radius: 12px;
       margin-bottom: 20px;
     }
@@ -139,7 +106,6 @@
     }
     .model-card p {
       color: #d1d1f9;
-      margin-bottom: 15px;
     }
     footer {
       text-align: center;
@@ -147,91 +113,119 @@
       color: #9999ff;
       font-size: 0.9em;
     }
-    footer a {
-      color: #9999ff;
-      text-decoration: none;
-      margin: 0 10px;
+    .modal {
+      display: none;
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
     }
-    footer a:hover {
-      color: #ffffff;
+    .modal-content {
+      background: #1c247a;
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 600px;
+      text-align: center;
+    }
+    .modal-content h4 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .modal-content p {
+      color: #d1d1f9;
+      margin-bottom: 20px;
+    }
+    .close-btn {
+      background: #6a8dff;
+      border: none;
+      padding: 10px 20px;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    @media(max-width:600px){
+      .hero h2 {font-size:2.2em;}
+      .hero p {font-size:1.2em;}
+      .section h3 {font-size:2em;}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>DreamCap</h1>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#models">Modelle</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Willkommen in deiner Traumwelt</h2>
-    <p>Mit DreamCap reist du in deine Lieblingsspiele – so real, als wärst du dort. Tauche ein in Abenteuer, Welten und Träume, die du nie vergessen wirst.</p>
-    <button onclick="alert('Das ist nur eine Demo!')">Jetzt entdecken</button>
-  </section>
+<header>
+  <h1>DreamCap</h1>
+  <nav>
+    <a href="#models">Modelle</a>
+  </nav>
+</header>
 
-  <section id="features" class="section">
-    <h3>Features</h3>
-    <div class="features">
-      <div class="feature-card">
-        <img src="https://via.placeholder.com/100/6a8dff/ffffff?text=VR" alt="VR">
-        <h4>Immersive VR</h4>
-        <p>Erlebe Spiele in nie dagewesener Tiefe. Beweg dich frei und fühl dich mitten im Geschehen.</p>
-      </div>
-      <div class="feature-card">
-        <img src="https://via.placeholder.com/100/4b5cd8/ffffff?text=KI" alt="KI">
-        <h4>KI-gesteuerte Träume</h4>
-        <p>Unsere KI passt die Traumwelt an deine Wünsche an. Jeder Traum wird einzigartig.</p>
-      </div>
-      <div class="feature-card">
-        <img src="https://via.placeholder.com/100/2e3baa/ffffff?text=Safety" alt="Sicherheit">
-        <h4>Maximale Sicherheit</h4>
-        <p>Modernste Technologie schützt dich während deiner Traumreisen. Absolut risikofrei.</p>
-      </div>
+<section class="hero">
+  <h2>Willkommen in deiner Traumwelt</h2>
+  <p>Mit DreamCap reist du in Spiele und erlebst Abenteuer wie nie zuvor.</p>
+</section>
+
+<section id="models" class="section">
+  <h3>Unsere Modelle</h3>
+  <div class="models">
+    <div class="model-card" onclick="openModal('one')">
+      <img src="https://via.placeholder.com/300x200/6a8dff/ffffff?text=DreamCap+One" alt="DreamCap One">
+      <h4>DreamCap One</h4>
+      <p>Einsteiger-Modell für deine ersten Traumreisen.</p>
     </div>
-  </section>
-
-  <section id="models" class="section">
-    <h3>Unsere Modelle</h3>
-    <div class="models">
-      <div class="model-card">
-        <img src="https://via.placeholder.com/300x200/6a8dff/ffffff?text=DreamCap+One" alt="DreamCap One">
-        <h4>DreamCap One</h4>
-        <p>Perfekt für Einsteiger: leicht, bequem und sicher. Deine erste Reise in neue Welten beginnt hier.</p>
-        <button onclick="alert('Dies ist nur eine Demo.')">Mehr erfahren</button>
-      </div>
-      <div class="model-card">
-        <img src="https://via.placeholder.com/300x200/4b5cd8/ffffff?text=DreamCap+Pro" alt="DreamCap Pro">
-        <h4>DreamCap Pro</h4>
-        <p>Für Profis: Hyperrealistische Grafik, längere Sessions und mehr Freiheit. Pure Gaming-Power.</p>
-        <button onclick="alert('Dies ist nur eine Demo.')">Mehr erfahren</button>
-      </div>
-      <div class="model-card">
-        <img src="https://via.placeholder.com/300x200/2e3baa/ffffff?text=DreamCap+Ultra" alt="DreamCap Ultra">
-        <h4>DreamCap Ultra</h4>
-        <p>Das Beste vom Besten: KI-optimierte Träume, absolute Immersion. Die Zukunft beginnt jetzt.</p>
-        <button onclick="alert('Dies ist nur eine Demo.')">Mehr erfahren</button>
-      </div>
+    <div class="model-card" onclick="openModal('pro')">
+      <img src="https://via.placeholder.com/300x200/4b5cd8/ffffff?text=DreamCap+Pro" alt="DreamCap Pro">
+      <h4>DreamCap Pro</h4>
+      <p>Für Profis mit längeren Sessions und besserer Grafik.</p>
     </div>
-  </section>
-
-  <section id="kontakt" class="section">
-    <h3>Kontakt</h3>
-    <p style="text-align:center; max-width: 700px; margin: 0 auto; color: #d1d1f9;">
-      Hast du Fragen zu DreamCap? Oder willst du die Technologie testen? Schreib uns eine Nachricht und tauche ein in deine persönliche Traumwelt!
-    </p>
-    <div style="text-align:center; margin-top: 30px;">
-      <button onclick="alert('Das Kontaktformular ist nur eine Demo.')">Kontakt aufnehmen</button>
+    <div class="model-card" onclick="openModal('ultra')">
+      <img src="https://via.placeholder.com/300x200/2e3baa/ffffff?text=DreamCap+Ultra" alt="DreamCap Ultra">
+      <h4>DreamCap Ultra</h4>
+      <p>Maximale Immersion und KI-gesteuerte Erlebnisse.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    &copy; 2025 DreamCap | 
-    <a href="#">Impressum</a> | 
-    <a href="#">Datenschutz</a>
-  </footer>
+<footer>
+  &copy; 2025 DreamCap
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h4 id="modalTitle">Titel</h4>
+    <p id="modalDesc">Beschreibung</p>
+    <button class="close-btn" onclick="closeModal()">Schließen</button>
+  </div>
+</div>
+
+<script>
+  function openModal(model) {
+    let title = "";
+    let desc = "";
+    if(model==="one"){
+      title = "DreamCap One";
+      desc = "Das perfekte Einsteigermodell mit komfortabler Passform, einfacher Bedienung und solider Leistung. Ideal für kürzere Traumreisen.";
+    }
+    if(model==="pro"){
+      title = "DreamCap Pro";
+      desc = "Das Pro-Modell bietet hochauflösende Grafik, längere Laufzeit und individuell anpassbare Traumwelten. Für Gamer, die mehr wollen.";
+    }
+    if(model==="ultra"){
+      title = "DreamCap Ultra";
+      desc = "Das Spitzenmodell mit KI-gestützten Traumwelten, biometrischer Sicherheit und absolut realistischer Immersion.";
+    }
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalDesc").textContent = desc;
+    document.getElementById("modal").style.display = "flex";
+  }
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+</script>
+
 </body>
 </html>
