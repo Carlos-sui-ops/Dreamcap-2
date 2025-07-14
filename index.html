@@ -7,43 +7,54 @@
   <style>
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #0a0f3c, #1c247a);
+      background: #0a0f3c;
       color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       overflow-x: hidden;
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
     }
     header h1 {
-      font-size: 2em;
+      font-size: 2.5em;
       background: linear-gradient(45deg, #6a8dff, #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     nav a {
-      margin-left: 20px;
-      color: #ffffff;
+      margin-left: 30px;
       text-decoration: none;
+      color: #ffffff;
       font-weight: bold;
+      font-size: 1.1em;
       transition: color 0.3s;
     }
     nav a:hover {
       color: #6a8dff;
     }
-    .hero {
-      text-align: center;
+    section {
       padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .hero h2 {
-      font-size: 3.5em;
+      font-size: 4em;
+      text-align: center;
       margin-bottom: 20px;
       background: linear-gradient(45deg, #6a8dff, #ffffff);
       -webkit-background-clip: text;
@@ -51,107 +62,103 @@
     }
     .hero p {
       font-size: 1.5em;
+      text-align: center;
       color: #d1d1f9;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .hero button {
+    .button {
+      display: inline-block;
       background: #6a8dff;
-      border: none;
+      color: #fff;
       padding: 15px 30px;
       border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
       font-size: 1.2em;
-      color: #fff;
-      cursor: pointer;
       transition: background 0.3s;
     }
-    .hero button:hover {
+    .button:hover {
       background: #4b5cd8;
     }
-    .section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .section h3 {
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .models {
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
     }
-    .model-card {
+    .product-card {
       background: rgba(255,255,255,0.1);
       border-radius: 16px;
-      padding: 30px 20px;
-      text-align: center;
+      padding: 30px;
+      cursor: pointer;
       transition: transform 0.3s, background 0.3s;
       backdrop-filter: blur(10px);
-      cursor: pointer;
     }
-    .model-card:hover {
+    .product-card:hover {
       transform: translateY(-10px);
       background: rgba(255,255,255,0.2);
     }
-    .model-card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 20px;
+    .product-card h4 {
+      font-size: 2em;
+      margin-bottom: 15px;
     }
-    .model-card h4 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-    }
-    .model-card p {
+    .product-card p {
       color: #d1d1f9;
+      font-size: 1.1em;
+    }
+    .details {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      display: none;
+      color: #fff;
+    }
+    .details.active {
+      display: block;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .features, .specs, .testimonials, .faq, .accessories {
+      margin-top: 50px;
+    }
+    h3 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .feature-list, .spec-list, .faq-list, .accessory-list {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #d1d1f9;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+    .accessory-list h4 {
+      font-size: 1.8em;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .accessory-list ul {
+      list-style: disc;
+      padding-left: 30px;
+    }
+    .accessory-list li {
+      margin-bottom: 10px;
     }
     footer {
       text-align: center;
       padding: 50px 20px;
       color: #9999ff;
       font-size: 0.9em;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .modal-content {
-      background: #1c247a;
-      padding: 40px;
-      border-radius: 16px;
-      max-width: 600px;
-      text-align: center;
-    }
-    .modal-content h4 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    .modal-content p {
-      color: #d1d1f9;
-      margin-bottom: 20px;
-    }
-    .close-btn {
-      background: #6a8dff;
-      border: none;
-      padding: 10px 20px;
-      color: #fff;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    @media(max-width:600px){
-      .hero h2 {font-size:2.2em;}
-      .hero p {font-size:1.2em;}
-      .section h3 {font-size:2em;}
+      background: #000;
+      margin-top: 100px;
     }
   </style>
 </head>
@@ -160,71 +167,126 @@
 <header>
   <h1>DreamCap</h1>
   <nav>
-    <a href="#models">Modelle</a>
+    <a href="#products">Modelle</a>
+    <a href="#features">Features</a>
+    <a href="#specs">Specs</a>
+    <a href="#accessories">Zubehör</a>
+    <a href="#faq">FAQ</a>
   </nav>
 </header>
 
 <section class="hero">
   <h2>Willkommen in deiner Traumwelt</h2>
-  <p>Mit DreamCap reist du in Spiele und erlebst Abenteuer wie nie zuvor.</p>
+  <p>Mit DreamCap reist du in digitale Welten und erlebst Abenteuer, als wärst du wirklich dort. Die Zukunft des Entertainments – jetzt auf deinem Kopf.</p>
+  <a href="#products" class="button">Zu den Modellen</a>
 </section>
 
-<section id="models" class="section">
+<section id="products">
   <h3>Unsere Modelle</h3>
-  <div class="models">
-    <div class="model-card" onclick="openModal('one')">
-      <img src="https://via.placeholder.com/300x200/6a8dff/ffffff?text=DreamCap+One" alt="DreamCap One">
+  <div class="products">
+    <div class="product-card" onclick="toggleDetails('one')">
       <h4>DreamCap One</h4>
-      <p>Einsteiger-Modell für deine ersten Traumreisen.</p>
+      <p>Dein Einstieg in die Traumwelten. Einfach, leicht, erschwinglich.</p>
+      <div id="details-one" class="details">
+        <p>DreamCap One bietet ein minimalistisches Design und eine solide Performance für kurze Sessions in deinen Lieblingsspielen.</p>
+      </div>
     </div>
-    <div class="model-card" onclick="openModal('pro')">
-      <img src="https://via.placeholder.com/300x200/4b5cd8/ffffff?text=DreamCap+Pro" alt="DreamCap Pro">
+    <div class="product-card" onclick="toggleDetails('pro')">
       <h4>DreamCap Pro</h4>
-      <p>Für Profis mit längeren Sessions und besserer Grafik.</p>
+      <p>Mehr Leistung, längere Akkulaufzeit und bessere Traumgrafik.</p>
+      <div id="details-pro" class="details">
+        <p>DreamCap Pro richtet sich an erfahrene Gamer, die Wert auf intensive, hochauflösende Traumwelten legen. Mit adaptiver Passform und biometrischem Login.</p>
+      </div>
     </div>
-    <div class="model-card" onclick="openModal('ultra')">
-      <img src="https://via.placeholder.com/300x200/2e3baa/ffffff?text=DreamCap+Ultra" alt="DreamCap Ultra">
+    <div class="product-card" onclick="toggleDetails('ultra')">
       <h4>DreamCap Ultra</h4>
-      <p>Maximale Immersion und KI-gesteuerte Erlebnisse.</p>
+      <p>Ultimative Immersion dank KI und personalisierten Erlebnissen.</p>
+      <div id="details-ultra" class="details">
+        <p>DreamCap Ultra ist das Flaggschiff: KI-gesteuerte Traumumgebungen, neuronale Schnittstellen und Hyperrealismus für grenzenlose Möglichkeiten.</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<section id="features" class="features">
+  <h3>Features</h3>
+  <div class="feature-list">
+    <ul>
+      <li>Reise in über 500 digitale Traumwelten</li>
+      <li>Biometrische Sicherheit und individuelle Anpassung</li>
+      <li>Nahtlose Steuerung per Gedanken-Interface</li>
+      <li>KI-gestützte Szenarien für personalisierte Erlebnisse</li>
+      <li>Lange Akkulaufzeiten für ungestörte Träume</li>
+    </ul>
+  </div>
+</section>
+
+<section id="specs" class="specs">
+  <h3>Technische Daten</h3>
+  <div class="spec-list">
+    <ul>
+      <li>Display-Auflösung: 8K pro Auge</li>
+      <li>Prozessor: Quantum Core X</li>
+      <li>Speicher: 1TB interner Speicher</li>
+      <li>Akku-Laufzeit: bis zu 18 Stunden</li>
+      <li>Gewicht: nur 220 Gramm</li>
+      <li>Netzwerk: DreamNet 7.0 kompatibel</li>
+    </ul>
+  </div>
+</section>
+
+<section id="accessories" class="accessories">
+  <h3>Zubehör & Farben</h3>
+  <div class="accessory-list">
+    <h4>Zubehör</h4>
+    <ul>
+      <li><strong>DreamCap Tragegurt:</strong> Komfortabler Gurt, damit dein DreamCap sicher sitzt – auch beim Schlafen.</li>
+      <li><strong>DreamCap Tasche:</strong> Schützt dein DreamCap unterwegs. Edles Design, platzsparend zusammenfaltbar.</li>
+    </ul>
+    <h4>Farboptionen</h4>
+    <ul>
+      <li>Midnight Black</li>
+      <li>Dream White</li>
+      <li>Neon Purple</li>
+      <li>Sky Blue</li>
+    </ul>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h3>Kundenstimmen</h3>
+  <div class="feature-list">
+    <p>„DreamCap hat mein Gaming-Leben verändert. Es fühlt sich an, als wäre ich wirklich im Spiel.“ – Alex K.</p>
+    <p>„Nie wieder normale Bildschirme. Ich reise jede Nacht in neue Welten.“ – Samira L.</p>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <h3>FAQ</h3>
+  <div class="faq-list">
+    <p><strong>Ist DreamCap sicher?</strong> Ja, alle Modelle erfüllen höchste Sicherheitsstandards und biometrische Verschlüsselung schützt deine Daten.</p>
+    <p><strong>Kann ich DreamCap offline nutzen?</strong> Ja, du kannst lokal gespeicherte Traumwelten erleben, auch ohne Internet.</p>
+    <p><strong>Wie schwer ist DreamCap?</strong> Zwischen 180g und 220g – federleicht!</p>
   </div>
 </section>
 
 <footer>
-  &copy; 2025 DreamCap
+  &copy; 2025 DreamCap. Alle Rechte vorbehalten.
 </footer>
 
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h4 id="modalTitle">Titel</h4>
-    <p id="modalDesc">Beschreibung</p>
-    <button class="close-btn" onclick="closeModal()">Schließen</button>
-  </div>
-</div>
-
 <script>
-  function openModal(model) {
-    let title = "";
-    let desc = "";
-    if(model==="one"){
-      title = "DreamCap One";
-      desc = "Das perfekte Einsteigermodell mit komfortabler Passform, einfacher Bedienung und solider Leistung. Ideal für kürzere Traumreisen.";
-    }
-    if(model==="pro"){
-      title = "DreamCap Pro";
-      desc = "Das Pro-Modell bietet hochauflösende Grafik, längere Laufzeit und individuell anpassbare Traumwelten. Für Gamer, die mehr wollen.";
-    }
-    if(model==="ultra"){
-      title = "DreamCap Ultra";
-      desc = "Das Spitzenmodell mit KI-gestützten Traumwelten, biometrischer Sicherheit und absolut realistischer Immersion.";
-    }
-    document.getElementById("modalTitle").textContent = title;
-    document.getElementById("modalDesc").textContent = desc;
-    document.getElementById("modal").style.display = "flex";
+  function toggleDetails(model) {
+    const el = document.getElementById("details-" + model);
+    el.classList.toggle("active");
   }
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-  }
+  window.addEventListener("scroll", () => {
+    document.querySelectorAll("section").forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top < window.innerHeight * 0.85) {
+        sec.classList.add("visible");
+      }
+    });
+  });
 </script>
 
 </body>
