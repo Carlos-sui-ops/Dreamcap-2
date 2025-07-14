@@ -2,49 +2,137 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DreamCap – Reise in deine Spiele</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DreamCap – Reise in Spiele</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0a0f3c, #1c247a);
+      color: #ffffff;
       overflow-x: hidden;
-      text-align: center;
-      padding: 60px 20px;
     }
-    h1 {
-      font-size: 3em;
-      color: #ffcc00;
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      background: linear-gradient(45deg, #6a8dff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 20px;
     }
-    p {
-      font-size: 1.2em;
-      color: #ddd;
-      max-width: 600px;
-      margin: 0 auto 20px;
+
+    header p {
+      font-size: 1.4em;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+      color: #d1d1f9;
     }
-    a {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #ffcc00;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
+
+    .models-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .models-section h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: #ffffff;
+    }
+
+    .models {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .model-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .model-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .model-card h3 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .model-card p {
+      font-size: 1em;
+      color: #d1d1f9;
+      margin-bottom: 20px;
+    }
+
+    .model-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #9999ff;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <h1>DreamCap</h1>
-  <p>Setz dir das DreamCap auf, schlaf ein – und reise in die Welten deiner Lieblingsspiele.</p>
-  <p>Diese Seite ist nur eine Demo. Kaufen kannst du DreamCap noch nicht – aber träumen darfst du!</p>
-  <a href="#">Jetzt kaufen</a>
+  <header>
+    <h1>DreamCap</h1>
+    <p>Das revolutionäre Cappy, mit dem du in deine Lieblingsspiele reisen kannst.
+    Setze es auf, schlaf ein – und entdecke fantastische Welten, als wärst du wirklich dort.</p>
+  </header>
+
+  <section class="models-section">
+    <h2>Unsere Modelle</h2>
+    <div class="models">
+      <div class="model-card">
+        <img src="https://via.placeholder.com/300x200/6a8dff/ffffff?text=DreamCap+One" alt="DreamCap One" />
+        <h3>DreamCap One</h3>
+        <p>Das Einsteigermodell für alle, die erste Schritte ins Gaming-Traumreisen wagen möchten.
+        Leicht, komfortabel und sicher.</p>
+      </div>
+      <div class="model-card">
+        <img src="https://via.placeholder.com/300x200/4b5cd8/ffffff?text=DreamCap+Pro" alt="DreamCap Pro" />
+        <h3>DreamCap Pro</h3>
+        <p>Für Hardcore-Gamer: noch realistischere Welten, verbesserte Sensorik und längere Traumdauer.
+        Perfekt für immersive Abenteuer.</p>
+      </div>
+      <div class="model-card">
+        <img src="https://via.placeholder.com/300x200/2e3baa/ffffff?text=DreamCap+Ultra" alt="DreamCap Ultra" />
+        <h3>DreamCap Ultra</h3>
+        <p>Das Nonplusultra: KI-gestützte Traumsteuerung, hyperrealistische Grafiken und personalisierte Welten.
+        Der ultimative Gamechanger.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 DreamCap. Diese Seite dient nur zu Demonstrationszwecken.
+  </footer>
 </body>
 </html>
